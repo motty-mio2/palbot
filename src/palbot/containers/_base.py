@@ -42,7 +42,7 @@ class ContainerMNG(metaclass=ABCMeta):
             else:
                 return False
 
-    def start_container(self) -> msg:
+    def container_start(self) -> msg:
         if self._is_container_running():
             return msg(status=True, msg="Container already running.")
         else:
@@ -54,10 +54,18 @@ class ContainerMNG(metaclass=ABCMeta):
             else:
                 return msg(status=False, msg="Failed to Start Container.")
 
-    def stop_container(self) -> msg:
+    def container_stop(self) -> msg:
         if self.container is not None:
             self.container.stop()
 
         if self._is_container_running():
             return msg(status=False, msg="Failed to Stop Container.")
         return msg(status=True, msg="Container Stopped.")
+
+    def container_status(self) -> msg:
+        i = self._is_container_running()
+
+        return msg(
+            status=i,
+            msg=["停止しています", "起動中です"][i],
+        )
