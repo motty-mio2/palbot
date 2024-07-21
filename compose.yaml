@@ -1,0 +1,8 @@
+services:
+  bot:
+    build: .
+    container_name: palbot
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - .:/workdir:ro
+    command: ${CLIENT_ID} ${API_TOKEN}
