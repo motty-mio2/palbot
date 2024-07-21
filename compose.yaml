@@ -6,3 +6,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - .:/workdir:ro
     command: ${CLIENT_ID} ${API_TOKEN}
+    restart: always
+    extra_hosts:
+      - host.docker.internal:host-gateway

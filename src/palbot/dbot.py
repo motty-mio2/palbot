@@ -41,8 +41,9 @@ class MyClient(Client):
             pl = get_players()
 
             if pl is None:
-                pass
+                logger.info("Container is not running")
             else:
                 if pl == 0:
+                    logger.info("No Player")
                     cnmg.container_stop()
             await asyncio.sleep(5 * 60)

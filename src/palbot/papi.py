@@ -8,9 +8,9 @@ from palbot.config import config
 
 
 def get_players() -> int | None:
-    env = dotenv_values(dotenv_path=config.root_dir / ".env")
+    env = dotenv_values(dotenv_path=config.root_dir / "pal.env")
 
-    url = "http://localhost:8212/v1/api/players"
+    url = "http://host.docker.internal:8212/v1/api/players"
 
     try:
         response = requests.get(
