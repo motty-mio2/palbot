@@ -46,4 +46,6 @@ class MyClient(Client):
                 if pl == 0:
                     logger.info("No Player")
                     cnmg.container_stop()
+                else:
+                    logger.info(f"{pl } Players")
             await asyncio.sleep(5 * 60)
